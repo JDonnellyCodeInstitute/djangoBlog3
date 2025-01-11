@@ -22,8 +22,9 @@ def post_detail(request, slug):
 
     :template:`blog/post_detail.html`
     """
-
-    queryset = Post.objects.filter(status=1)
+    # This retrieves all the published posts
+    queryset = Post.objects.filter(status=1) 
+    # This stops incorrect inputs - if the slug is input incorrectly, or theres a 404 this activates 
     post = get_object_or_404(queryset, slug=slug)
 
     return render(

@@ -35,6 +35,7 @@ def post_detail(request, slug):
 
     # Post request for the comment
     if request.method == "POST":
+        print("Received a post request")
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -46,8 +47,10 @@ def post_detail(request, slug):
                 'Comment submitted and awaiting approval'
             )
 
-    # Box for users to input comments
+    # This resets the comment box to blank after a comment is added in the block above
     comment_form = CommentForm()
+
+    print("About to render template")
 
     return render(
         request,

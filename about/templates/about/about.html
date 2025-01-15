@@ -7,7 +7,11 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-4 text-center">
+            {% if "placeholder" in post.featured_image.url %}
             <img src="{% static 'images/nobody.jpg' %}" width="75%">
+            {% else %}
+            <img src="{{ about.profile_image.url }}" class="scale" alt="{{ about.title }}">
+            {% endif %}
         </div>
         <div class="col-8">
             <!-- Title goes between these h2 tags -->
@@ -35,17 +39,17 @@
                                 have the classes of btn, btn-secondary -->
             <!-- <div class="col-md-4 card mb-4 mt-3">
                 <div class="card-body"> -->
-                    <!-- {% if user.is_authenticated %} -->
-                    <form id="collabForm" method="post" style="margin-top: 1.3em;">
-                        {{ collaborate_form | crispy }}
-                        {% csrf_token %}
-                        <button id="submitButton" type="submit" class="btn btn-secondary">Submit</button>
-                    </form>
-                    <!-- {% else %}
+            <!-- {% if user.is_authenticated %} -->
+            <form id="collabForm" method="post" style="margin-top: 1.3em;">
+                {{ collaborate_form | crispy }}
+                {% csrf_token %}
+                <button id="submitButton" type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+            <!-- {% else %}
                     {% endif %} -->
-                </div>
-            </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 {% endblock content %}
